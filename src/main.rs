@@ -4,6 +4,8 @@ use std::fs;
 
 // modules 
 pub mod token;
+pub mod datum;
+pub mod scanner;
 
 fn main() {
     let args: Vec<String> = env::args().collect();
