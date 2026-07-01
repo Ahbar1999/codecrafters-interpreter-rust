@@ -3,7 +3,7 @@ use crate::datum::{ Datum };
 pub enum TokenType {
     // Single-character tokens.
     LeftParen, RightParen, LeftBrace, RightBrace,
-    COMMA, DOT, MINUS, PLUS, SEMICOLON, SLASH, STAR,
+    COMMA, DOT, MINUS, PLUS, SemiColon, SLASH, STAR,
 
     // One or two character tokens.
     BANG, BangEqual,
@@ -31,14 +31,14 @@ pub struct Token {
 }
 
 impl Token {
-    pub fn new(_type: TokenType, lexeme: &'source str, literal: &'source str) -> Self {
+    pub fn new(_type: TokenType, lexeme: &'source str, literal: &'source str, line: usize) -> Self {
         Self {
-            _type:  _type,
+            _type,
             lexeme: String::From(lexeme),   // borrowing lexeme and literal doenst make sense
                                             // the source text is read once, it cannot live as long
                                             // as the program, we need our own copies of strings
             literal:String::From(literal),
-            line:   usize, 
+            line, 
         }
     }
 
